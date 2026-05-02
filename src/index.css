@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-primary: #C0392B;
+  --color-secondary: #E67E22;
+  --color-accent: #F39C12;
+  --color-bg: #FDF6EC;
+  --color-text: #2C2C2C;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans bg-bg text-text;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Custom underline animation for nav links */
+.nav-link {
+  @apply relative overflow-hidden pb-1;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 origin-right;
+}
+
+.nav-link:hover::after {
+  @apply scale-x-100 origin-left;
+}
